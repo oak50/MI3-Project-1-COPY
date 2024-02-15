@@ -33,7 +33,7 @@
 - - taylor_swift.csv 
 - OUTPUT
 - - Output.pdf
-- - SCRIPTS
+- SCRIPTS
 - - taylorswift.py
 - - TaylorSwift.Rmd
 - LICENSE.md
