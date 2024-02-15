@@ -1,0 +1,118 @@
+---
+title: "Hotdog"
+output: html_document
+date: '2024-01-23'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+library(tidyverse)
+library(dplyr)
+library(ggplot2)
+library(Hmisc)
+library(car)
+library(corrplot)
+library(readxl)```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+
+# Graphs for number of tracks per album
+a <- c("Taylor Swift", "Fearless (Taylor's Version)", "Speak Now (Deluxe)", "Red (Deluxe Edition)", "1989 (Deluxe)", "Reputation", "Lover", "Folklore (Deluxe Version)", "Evermore (Deluxe Version)")
+t <- c(15, 26, 17, 22, 16, 15, 18, 17, 17)
+df <- data.frame(Album=a, Tracks=t)
+ggplot(df, aes(x=factor(Album, level=a), y=Tracks, fill=Album)) + geom_bar(stat="identity") + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) + ggtitle("Number of Tracks per Album") + labs(x="Album")
+
+
+
+
+```
+
+```{r pressure, echo=FALSE}
+
+
+
+# Average sentiment analysis for each song per album
+
+# Import the data
+taylor_swift <- read.csv("C:/Users/evely/OneDrive/Documents/DS 4002 - Data Science Project/MI3-Project-1/DATA/taylor_swift.csv")
+
+
+# Find the average scores for each song
+negative_scores <- aggregate(negative ~ albumn_name + track_title, data=taylor_swift, FUN = mean)
+neutral_scores <- aggregate(neutral ~ albumn_name + track_title, data=taylor_swift, FUN = mean)
+positive_scores <- aggregate(positive ~ albumn_name + track_title, data=taylor_swift, FUN = mean)
+
+# Combine into one data frame
+average_scores <- merge(negative_scores, neutral_scores, by="track_title")
+average_scores <- merge(average_scores, positive_scores, by="track_title")
+
+
+
+# Remove duplicate album column
+average_scores <- average_scores[, -which(names(average_scores) == "albumn_name.x")]
+average_scores <- average_scores[, -which(names(average_scores) == "albumn_name.y")]
+average_scores
+
+
+# Melt the data frame to long format
+average_scores_long <- pivot_longer(average_scores, cols = c("positive", "negative", "neutral"), names_to = "sentiment_type", values_to = "sentiment_score")
+
+# Find track title and track number
+unique_values <- taylor_swift %>%
+  distinct(track_title, .keep_all = TRUE) %>%
+  select(track_title, track_number)
+
+
+# Merge with track number and set album order
+scores <- merge(average_scores_long, unique_values, by="track_title")
+scores$albumn_name <- factor(scores$albumn_name, levels = c("Taylor Swift", "Fearless (Taylor’s Version)", "Speak Now (Deluxe)", "Red (Deluxe Edition)", "1989 (Deluxe)", "reputation", "Lover", "folklore (deluxe version)", "evermore (deluxe version)"))
+
+
+# Create the plot
+
+ggplot(scores, aes(x = track_number, y = sentiment_score, fill = sentiment_type)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(x = "Track Number", y = "Sentiment Score", title = "Sentiment Analysis by Album and Track Number") +
+  facet_wrap(~ albumn_name, scales = "free") 
+
+
+# Graph without neutral scores
+# Melt the data frame to long format
+average_scores_long2 <- pivot_longer(average_scores, cols = c("positive", "negative"), names_to = "sentiment_type", values_to = "sentiment_score")
+average_scores_long2
+
+# Find track title and track number
+unique_values <- taylor_swift %>%
+  distinct(track_title, .keep_all = TRUE) %>%
+  select(track_title, track_number)
+
+
+# Merge with track number and set album order
+scores2 <- merge(average_scores_long2, unique_values, by="track_title")
+scores2$albumn_name <- factor(scores2$albumn_name, levels = c("Taylor Swift", "Fearless (Taylor’s Version)", "Speak Now (Deluxe)", "Red (Deluxe Edition)", "1989 (Deluxe)", "reputation", "Lover", "folklore (deluxe version)", "evermore (deluxe version)"))
+
+
+# Create the plot
+
+ggplot(scores2, aes(x = track_number, y = sentiment_score, fill = sentiment_type)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(x = "Track Number", y = "Sentiment Score", title = "Sentiment Analysis by Album and Track Number") +
+  facet_wrap(~ albumn_name, scales = "free") 
+
+
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
