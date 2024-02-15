@@ -20,22 +20,22 @@
 ## Section 2: A Map of your documentation. 
 
 - DATA
-- - 01-taylor_swift.csv
-- - 02-fearless_taylors_version.csv
-- - 03-speak_now_deluxe_package.csv
-- - 04-red_deluxe_edition.csv
-- - 05-1989_deluxe.csv
-- - 06-reputation.csv
-- - 07-lover.csv
-- - 08-folklore_deluxe_version.csv
-- - 09-evermore_deluxe_version.csv
-- - Data Appendix.pdf
-- - taylor_swift.csv 
+  - 01-taylor_swift.csv
+  - 02-fearless_taylors_version.csv
+  - 03-speak_now_deluxe_package.csv
+  - 04-red_deluxe_edition.csv
+  - 05-1989_deluxe.csv
+  - 06-reputation.csv
+  - 07-lover.csv
+  - 08-folklore_deluxe_version.csv
+  - 09-evermore_deluxe_version.csv
+  - Data Appendix.pdf
+  - taylor_swift.csv 
 - OUTPUT
-- - Output.pdf
+  - Output.pdf
 - SCRIPTS
-- - taylorswift.py
-- - TaylorSwift.Rmd
+  - taylorswift.py
+  - TaylorSwift.Rmd
 - LICENSE.md
 - README.md
 
