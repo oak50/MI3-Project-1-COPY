@@ -1,0 +1,47 @@
+library(ggplot2)
+library(dplyr)
+
+
+
+orig_data = read.csv("taylor_swift.csv",header=TRUE, sep = ",")
+head(orig_data)
+str(orig_data)
+
+
+
+sentiment_lookup = c("Negative" = -1, "Neutral" = 0, "Positive" = 1)
+
+# Apply the lookup table to the 'overall' column to convert sentiment to numeric
+orig_data$overall_numeric = sentiment_lookup[orig_data$overall]
+
+# Group by albumn_name and calculate average sentiment scores
+average_sentiment <- orig_data %>%
+  dplyr::group_by(albumn_name) %>%
+  dplyr::summarize(
+    avg_negative = mean(negative),
+    avg_neutral = mean(neutral),
+    avg_positive = mean(positive),
+    avg_overall = mean(overall_numeric)
+  )
+
+# Print the result
+print(average_sentiment)
+
+
+
+#reorder the albums in the graph to be chronological
+desired_order = c("Taylor Swift", "Fearless (Taylor’s Version)", "Speak Now (Deluxe)", 
+                   "Red (Deluxe Edition)", "1989 (Deluxe)", "reputation", "Lover", 
+                   "folklore (deluxe version)", "evermore (deluxe version)")
+
+average_sentiment$albumn_name = factor(average_sentiment$albumn_name, levels = desired_order)
+
+#plot the graph to be a scatterplot
+ggplot(average_sentiment, aes(x = albumn_name, y = avg_overall)) +
+  geom_point(color = "blue") +
+  geom_line(color = "blue", aes(group = 1)) +  # Add connecting lines
+  labs(title = "Overall Average Sentiment Score by Album",
+       y = "Average Sentiment Score",
+       x = "Album") +
+  theme_minimal() +
+  theme(axis.text = element_text(angle = 45, hjust = 1, size = 18))
