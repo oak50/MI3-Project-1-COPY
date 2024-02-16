@@ -36,6 +36,7 @@
 - SCRIPTS
   - taylorswift.py
   - TaylorSwift.Rmd
+  - average_sentiment_graph
 - LICENSE.md
 - README.md
 
