@@ -30,7 +30,7 @@ library(kableExtra)
 ## Summary Statistics for the final dataset. 
 
 # Import and prepare data
-taylor_swift <- read.csv("C:/Users/evely/OneDrive/Documents/DS 4002 - Data Science Project/MI3-Project-1/DATA/taylor_swift.csv")
+taylor_swift <- read.csv("/workspace/MI3-Project-1-COPY/DATA/taylor_swift.csv")
 taylor_swift$albumn_name <- factor(taylor_swift$albumn_name, levels = c("Taylor Swift", "Fearless (Taylor’s Version)", "Speak Now (Deluxe)", "Red (Deluxe Edition)", "1989 (Deluxe)", "reputation", "Lover", "folklore (deluxe version)", "evermore (deluxe version)"))
 
 ```
