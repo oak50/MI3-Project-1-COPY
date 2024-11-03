@@ -46,7 +46,7 @@ if __name__ == "__main__" :
         writer.writerow(["albumn_name","track_title","track_number","lyric", "line","negative","neutral","positive","overall"])
         
         # Open the 'Taylor Swift' albumn file and write the data to the new file along with the sentiment scores
-        with open('01-taylor_swift.csv', 'r', encoding="utf8") as csv_file:
+        with open('/workspace/MI3-Project-1-COPY/DATA/01-taylor_swift.csv', 'r', encoding="utf8") as csv_file:
             csv_reader = csv.reader(csv_file)
             next(csv_reader)
             for line in csv_reader:
@@ -54,7 +54,7 @@ if __name__ == "__main__" :
                 writer.writerow(data)
 
         # Open the 'Fearless (Taylor's Version)' albumn file and write the data to the new file along with the sentiment scores
-        with open('02-fearless_taylors_version.csv', 'r', encoding="utf8") as csv_file:
+        with open('/workspace/MI3-Project-1-COPY/DATA/02-fearless_taylors_version.csv', 'r', encoding="utf8") as csv_file:
             csv_reader = csv.reader(csv_file)
             next(csv_reader)
             for line in csv_reader:
@@ -62,7 +62,7 @@ if __name__ == "__main__" :
                 writer.writerow(data)
 
         # Open the 'Speak Now (Deluxe Package)' albumn file and write the data to the new file along with the sentiment scores
-        with open('03-speak_now_deluxe_package.csv', 'r', encoding="utf8") as csv_file:
+        with open('/workspace/MI3-Project-1-COPY/DATA/03-speak_now_deluxe_package.csv', 'r', encoding="utf8") as csv_file:
             csv_reader = csv.reader(csv_file)
             next(csv_reader)
             for line in csv_reader:
@@ -70,7 +70,7 @@ if __name__ == "__main__" :
                 writer.writerow(data)
 
         # Open the 'Red (Deluxe Edition)' albumn file and write the data to the new file along with the sentiment scores
-        with open('04-red_deluxe_edition.csv', 'r', encoding="utf8") as csv_file:
+        with open('/workspace/MI3-Project-1-COPY/DATA/04-red_deluxe_edition.csv', 'r', encoding="utf8") as csv_file:
             csv_reader = csv.reader(csv_file)
             next(csv_reader)
             for line in csv_reader:
@@ -78,7 +78,7 @@ if __name__ == "__main__" :
                 writer.writerow(data)
 
         # Open the '1989 (Deluxe)' albumn file and write the data to the new file along with the sentiment scores
-        with open('05-1989_deluxe.csv', 'r', encoding="utf8") as csv_file:
+        with open('/workspace/MI3-Project-1-COPY/DATA/05-1989_deluxe.csv', 'r', encoding="utf8") as csv_file:
             csv_reader = csv.reader(csv_file)
             next(csv_reader)
             for line in csv_reader:
@@ -86,7 +86,7 @@ if __name__ == "__main__" :
                 writer.writerow(data)
 
         # Open the 'Reputation' albumn file and write the data to the new file along with the sentiment scores
-        with open('06-reputation.csv', 'r', encoding="utf8") as csv_file:
+        with open('/workspace/MI3-Project-1-COPY/DATA/06-reputation.csv', 'r', encoding="utf8") as csv_file:
             csv_reader = csv.reader(csv_file)
             next(csv_reader)
             for line in csv_reader:
@@ -94,7 +94,7 @@ if __name__ == "__main__" :
                 writer.writerow(data)
 
         # Open the 'Lover' albumn file and write the data to the new file along with the sentiment scores
-        with open('07-lover.csv', 'r', encoding="utf8") as csv_file:
+        with open('/workspace/MI3-Project-1-COPY/DATA/07-lover.csv', 'r', encoding="utf8") as csv_file:
             csv_reader = csv.reader(csv_file)
             next(csv_reader)
             for line in csv_reader:
@@ -102,7 +102,7 @@ if __name__ == "__main__" :
                 writer.writerow(data)
 
         # Open the 'Folklore (Deluxe Version)' albumn file and write the data to the new file along with the sentiment scores
-        with open('08-folklore_deluxe_version.csv', 'r', encoding="utf8") as csv_file:
+        with open('/workspace/MI3-Project-1-COPY/DATA/08-folklore_deluxe_version.csv', 'r', encoding="utf8") as csv_file:
             csv_reader = csv.reader(csv_file)
             next(csv_reader)
             for line in csv_reader:
@@ -110,7 +110,7 @@ if __name__ == "__main__" :
                 writer.writerow(data)
 
         # Open the 'Evermore (Deluxe Version)' albumn file and write the data to the new file along with the sentiment scores
-        with open('09-evermore_deluxe_version.csv', 'r', encoding="utf8") as csv_file:
+        with open('/workspace/MI3-Project-1-COPY/DATA/09-evermore_deluxe_version.csv', 'r', encoding="utf8") as csv_file:
             csv_reader = csv.reader(csv_file)
             next(csv_reader)
             for line in csv_reader:
